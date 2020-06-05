@@ -32,4 +32,22 @@ router.post('/', (req, res) => {
 
 
 
+router.get('/:companyId', (req, res) => {
+
+    Company.findById(req.params.companyId, (err, company) => {
+        if (err) return res.status(500).send('Somthing went wrong! \n' +  err);
+        if (!company) return res.status(404).send("Company Doesn't exist");
+
+        Product.find({companyId: company._id}).populate('companyId', {name: 1}).exec((err, products) => {
+            if (err) return res.status(500).send('Somthing went wrong! \n' +  err);
+
+            return res.json(products)
+        });
+    });
+});
+
+
+
+
+
 module.exports = router;
