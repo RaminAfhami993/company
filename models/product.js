@@ -21,6 +21,10 @@ const ProductSchema = new Schema({
         type: Date,
         required: true,
         default: Date.now
+    },
+    companyId: {
+        type: Schema.Types.ObjectId,
+        required: true
     }
 });
 
