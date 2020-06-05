@@ -12,7 +12,6 @@ const CompanySchema = new Schema({
     phoneNumber: {
         type: String,
         required: true,
-        unique: true,
         trim: true
     },
     createdAt: {
